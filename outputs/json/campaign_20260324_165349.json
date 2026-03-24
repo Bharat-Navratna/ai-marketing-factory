@@ -1,0 +1,79 @@
+{
+  "merchant": {
+    "languages": [
+      "French",
+      "Moroccan Darija"
+    ],
+    "tone": "professional, trust-based",
+    "headline": "Nouvelles Opportunités pour les PME Marocaines",
+    "primary_script": "As-salamu alaykum, les propriétaires de PME marocaines ! Venez découvrir les dernières mises à jour pour développer votre entreprise et accroître vos ventes. Kayn m3a lina had l-mera !",
+    "hashtags": [
+      "PME_Maroc",
+      "Entrepreneuriat_Au_Maroc",
+      "Développement_Économique",
+      "Marché_Marocain",
+      "Croissance_Economique"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "Facebook",
+        "WhatsApp"
+      ],
+      "interests": [
+        "Entrepreneuriat",
+        "Développement des affaires",
+        "Marketing numérique"
+      ],
+      "geo": [
+        "Maroc",
+        "Casablanca",
+        "Rabat",
+        "Marrakech",
+        "Tanger"
+      ],
+      "audience_notes": [
+        "Les propriétaires de PME marocaines",
+        "Les entrepreneurs marocains",
+        "Les décideurs d'entreprise au Maroc"
+      ]
+    }
+  },
+  "consumer": {
+    "languages": [
+      "Moroccan Darija"
+    ],
+    "tone": "high-energy, street-smart",
+    "headline": "اخبار سوق المغرب",
+    "primary_script": "هاد الشىء الجديد لي جاي من عندنا! غدي نديرو شي حاجة جديدة و غدي نخدمو بكل قوة! مابغيتوش تقلق على حاجة، غدي نكونو معاكوم في كل خطوة",
+    "hashtags": [
+      "سوق_المغرب",
+      "أخبار_سوق",
+      "المرأة_المغربية",
+      "رجال_الأعمال",
+      "المغرب_يتطور"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "TikTok",
+        "Instagram Reels"
+      ],
+      "interests": [
+        "سوق",
+        "أخبار",
+        "مسلسلات"
+      ],
+      "geo": [
+        "الدار_البيضاء",
+        "فاس",
+        "مراكش",
+        "طنجة",
+        "الرباط"
+      ],
+      "audience_notes": [
+        "شباب",
+        "نساء",
+        "رجال_أعمال"
+      ]
+    }
+  }
+}

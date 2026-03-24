@@ -1,0 +1,22 @@
+# Environment variables (contains API keys)
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+
+# Outputs (generated assets — too large for git)
+outputs/audio/
+outputs/final_videos/
+outputs/rendered_ui/*.png
+outputs/rendered_ui/temp_*.html
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,69 @@
+{
+  "merchant": {
+    "languages": [
+      "French",
+      "Moroccan Darija"
+    ],
+    "tone": "professional, trust-based",
+    "headline": "Mise à jour commerciale pour les PME marocaines",
+    "primary_script": "Nous sommes fiers de vous annoncer les dernières mises à jour pour les PME marocaines. Découvrez les nouvelles opportunités pour développer votre entreprise et renforcer votre présence sur le marché marocain. Had chi ghadi ykun fayda men hadd l-maghribi, khassnakom had l-mawsoo3a li tahloukou yfajjrou bi a3malikoum.",
+    "hashtags": [
+      "PME_Maroc",
+      "Développement_Économique",
+      "Marché_Marocain",
+      "Entrepreneuriat_Africain",
+      "Croissance_Économique"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "Facebook",
+        "WhatsApp"
+      ],
+      "interests": [
+        "Entrepreneuriat",
+        "Développement économique",
+        "Marketing"
+      ],
+      "geo": [
+        "Maroc"
+      ],
+      "audience_notes": [
+        "Petites et moyennes entreprises marocaines",
+        "Entrepreneurs marocains",
+        "Dirigeants d'entreprise"
+      ]
+    }
+  },
+  "consumer": {
+    "languages": [
+      "Moroccan Darija"
+    ],
+    "tone": "high-energy, street-smart",
+    "headline": "اخبار جديدة! مابغاش تفوتك!",
+    "primary_script": "كيدوزو على الأخبار الجديدة ديالنا! غادي نديروا بزاف د الخدمات الجديدة و الخصومات الرائعة! لا تنسى تشارك مع أصحابك و تابعنا لاكتشاف المزيد!",
+    "hashtags": [
+      "#مغرب",
+      "#أخبار_جديدة",
+      "#تجارة_إلكترونية",
+      "#خدمات_جديدة",
+      "#خصومات"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "TikTok",
+        "Instagram Reels"
+      ],
+      "interests": [
+        "تجارة إلكترونية",
+        "خدمات جديدة"
+      ],
+      "geo": [
+        "المغرب"
+      ],
+      "audience_notes": [
+        "شباب مغاربة",
+        "نساء مغربيات"
+      ]
+    }
+  }
+}

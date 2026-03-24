@@ -1,0 +1,69 @@
+{
+  "merchant": {
+    "languages": [
+      "French",
+      "Moroccan Darija"
+    ],
+    "tone": "professional, trust-based",
+    "headline": "Retirez vos fonds instantanément sans frais avec YQN Pay !",
+    "primary_script": "Maintenant, vous pouvez retirer vos fonds YQN Pay en espèces instantanément et sans frais dans n'importe quel agence locale. Khedma fi bghit hadak ? Avec YQN Pay, vous avez la liberté de gérer vos finances en toute flexibilité. Retirez vos fonds quand vous le voulez, où vous le voulez !",
+    "hashtags": [
+      "YQNPAY",
+      "RetraitInstant",
+      "ZeroFrais",
+      "LiberteFinanciere",
+      "SME-Maroc"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "Facebook",
+        "WhatsApp"
+      ],
+      "interests": [
+        "commerce électronique",
+        "gestion financière"
+      ],
+      "geo": [
+        "Maroc"
+      ],
+      "audience_notes": [
+        "Petites et moyennes entreprises marocaines",
+        "Commerçants en ligne"
+      ]
+    }
+  },
+  "consumer": {
+    "languages": [
+      "Moroccan Darija"
+    ],
+    "tone": "high-energy, street-smart",
+    "headline": "Darou lak 3afak! YQN Pay khadem hadi",
+    "primary_script": "Koun hada lwa9t khayi, 3arfak hadi YQN Pay khasna hadchi hadi tkhoune kay9bal 9arouk men l9ari9a blaych, makaynch l9araj! khalli 3lik hadchi tkhayi",
+    "hashtags": [
+      "YQNPAY",
+      "Dara9i_Lak",
+      "Khaddem_Hadi",
+      "9arouk_Blaych",
+      "L9ari9a_Lokhra"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "TikTok",
+        "Instagram Reels"
+      ],
+      "interests": [
+        "commerce",
+        "finance",
+        "technology"
+      ],
+      "geo": [
+        "Morocco"
+      ],
+      "audience_notes": [
+        "young adults",
+        "small business owners",
+        "urban areas"
+      ]
+    }
+  }
+}

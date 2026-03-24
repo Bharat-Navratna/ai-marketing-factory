@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ css_file_uri }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Floating Header -->
+        <header class="glass-nav">
+            <h1 class="headline-lg">{{ app_name }}</h1>
+            <div class="merchant-actions">
+                <button class="btn btn-tertiary">{{ nav_button_text }}</button>
+                <div class="avatar">{{ avatar_letter }}</div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Balance -->
+            <section class="hero-balance">
+                <div class="balance-info">
+                    <p class="body-lg">{{ badge_text }}</p>
+                    <h2 class="display-lg">{{ headline }} <span class="currency">{{ market_label }}</span></h2>
+                </div>
+                <div class="action-group">
+                    <button class="btn btn-primary">{{ cta_text }}</button>
+                </div>
+            </section>
+
+            <!-- Main Message -->
+            <section class="sparkline-card">
+                <div class="card-header">
+                    <h3 class="headline-md">{{ section_title }}</h3>
+                    <span class="badge gold-badge">{{ highlight_tag }}</span>
+                </div>
+                <div class="message-block">
+                    <p class="body-lg">{{ primary_script }}</p>
+                </div>
+            </section>
+
+            <!-- Supporting Points -->
+            <section class="transactions-section">
+                <div class="section-title">
+                    <h3 class="headline-md">{{ supporting_title }}</h3>
+                    <button class="btn btn-secondary">{{ secondary_button_text }}</button>
+                </div>
+
+                <div class="transaction-list">
+                    <div class="tx-card">
+                        <div class="tx-details">
+                            <div class="tx-icon">{{ point_1_icon }}</div>
+                            <div>
+                                <h4 class="body-lg">{{ point_1_title }}</h4>
+                                <p class="body-sm text-dim">{{ point_1_text }}</p>
+                            </div>
+                        </div>
+                        <div class="tx-amount tx-positive">{{ point_1_badge }}</div>
+                    </div>
+
+                    <div class="tx-card">
+                        <div class="tx-details">
+                            <div class="tx-icon">{{ point_2_icon }}</div>
+                            <div>
+                                <h4 class="body-lg">{{ point_2_title }}</h4>
+                                <p class="body-sm text-dim">{{ point_2_text }}</p>
+                            </div>
+                        </div>
+                        <div class="tx-amount tx-positive">{{ point_2_badge }}</div>
+                    </div>
+
+                    <div class="tx-card">
+                        <div class="tx-details">
+                            <div class="tx-icon">{{ point_3_icon }}</div>
+                            <div>
+                                <h4 class="body-lg">{{ point_3_title }}</h4>
+                                <p class="body-sm text-dim">{{ point_3_text }}</p>
+                            </div>
+                        </div>
+                        <div class="tx-amount tx-negative">{{ point_3_badge }}</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Floating Action Button -->
+        <button class="fab" aria-label="{{ fab_label }}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+</body>
+</html>
