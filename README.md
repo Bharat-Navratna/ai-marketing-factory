@@ -149,7 +149,7 @@ Sample n8n output row (one workflow execution):
 
 ## Weekly R&D Agent
 
-The R&D agent is not a static report — it is an LLM-powered agent that reasons about our current stack vs. newer AI models every time it runs.
+The R&D agent is not a static report — it is an LLM-powered agent that reasons about the current stack vs. newer AI models every time it runs.
 
 When you call `GET /rd-agent-report`, the agent:
 1. Feeds the current stack details (FFmpeg, gTTS, their costs and weaknesses) to the LLM
@@ -177,11 +177,11 @@ Sample R&D output (generated fresh by AI each time):
 
 ---
 
-## How We Handled the Darija Nuance
+## How I Handled the Darija Nuance
 
 Moroccan Darija is not standard Arabic. It is a spoken dialect with no single "correct" written form, heavy French loanwords, and regional variation. Most AI models default to Modern Standard Arabic (MSA) or Egyptian Arabic when asked for "Arabic" — which sounds foreign and robotic to a Moroccan audience.
 
-Here is how we addressed this:
+Here is how I addressed this:
 
 **1. Separate prompt strategies per persona**
 
@@ -199,7 +199,7 @@ The voice service uses `lang="fr"` for merchant voiceovers (French-primary audie
 
 The merchant prompt enforces a *"professional, trust-based"* tone suitable for business owners on Facebook/WhatsApp. The consumer prompt enforces a *"high-energy, street-smart"* tone suitable for young consumers on TikTok. This distinction is critical because the same business update needs to feel completely different depending on who reads it.
 
-**What we would improve in production:**
+**What I would improve in production:**
 - Use ElevenLabs with a real Moroccan Darija voice profile for authentic-sounding audio
 - Add a Darija spell-check or human review step, since LLMs can produce "MSA-flavored" Darija
 - Include Darija transliteration (Latin script) for WhatsApp messages, where many Moroccans type Darija in Latin letters
@@ -253,17 +253,17 @@ The bottleneck is not compute — it is API rate limits on the LLM and TTS provi
 
 ---
 
-## Which AI Model We Recommend for 2026 and Why
+## Which AI Model I Recommend for 2026 and Why
 
 **Recommended LLM: Llama 3.3 70B via Groq (current) → upgrade path to GPT-4.1-mini or Claude Sonnet for production**
 
-We chose Llama 3.3 70B on Groq for the POC because:
+I chose Llama 3.3 70B on Groq for the POC because:
 - It is free-tier accessible during development
 - Groq's inference is extremely fast (~2 second response times)
 - The 70B model handles French + Darija bilingual generation well
 - Structured JSON output is reliable with careful prompt design
 
-For production in 2026, we recommend evaluating:
+For production in 2026, I recommend evaluating:
 - **GPT-4.1-mini** for better Darija accuracy and structured output reliability (best price-to-quality ratio for marketing copy)
 - **Claude Sonnet 4** for tasks requiring longer, nuanced cultural copy
 - Keep Groq/Llama as the cost-effective default and use a premium model only when Darija quality checks fail
@@ -287,7 +287,7 @@ AI video generation (Veo, Kling) is better for motion realism and lip-sync, but:
 - Less predictable output
 - Throughput constraints at 100 videos/day
 
-**Our recommendation:** Upgrade the voice layer first (biggest quality impact for lowest cost), keep the current video pipeline for reliability, and run weekly evaluations on new video models. The R&D agent endpoint (`/rd-agent-report`) is built to automate this comparison process.
+**My recommendation:** Upgrade the voice layer first (biggest quality impact for lowest cost), keep the current video pipeline for reliability, and run weekly evaluations on new video models. The R&D agent endpoint (`/rd-agent-report`) is built to automate this comparison process.
 
 ---
 
@@ -375,13 +375,13 @@ Both mockups show a realistic "Withdrawal Success" screen localized for Morocco,
 
 ---
 
-## Why We Chose Free Alternatives Over the Paid Spec
+## Why I Chose Free Alternatives Over the Paid Spec
 
-The assessment spec lists a paid tech stack: Google Stitch, Kling 3.0/Veo, ElevenLabs, Meta Graph API, WhatsApp Cloud API. **Every one of these is a paid service.** For a 4–5 hour POC, we deliberately chose zero-cost alternatives that demonstrate the same architecture and can be swapped to the paid versions with minimal code changes.
+The assessment spec lists a paid tech stack: Google Stitch, Kling 3.0/Veo, ElevenLabs, Meta Graph API, WhatsApp Cloud API. **Every one of these is a paid service.** For a 4–5 hour POC, I deliberately chose zero-cost alternatives that demonstrate the same architecture and can be swapped to the paid versions with minimal code changes.
 
 Here is the exact mapping:
 
-| Assessment Spec (Paid) | What We Used (Free) | Why |
+| Assessment Spec (Paid) | What I Used (Free) | Why |
 |---|---|---|
 | Google Stitch | Google Stitch for **template design only** → Playwright + Jinja2 for rendering | Stitch generated the initial HTML/CSS mockups; Playwright makes them dynamic and automatable (see below) |
 | Kling 3.0 / Google Veo | FFmpeg compositing | Deterministic, zero cost, no GPU, no API rate limits |
@@ -398,11 +398,11 @@ This was an intentional decision: prove the system design works end-to-end at ze
 
 ## How the UI Mockups Were Built (Google Stitch → Playwright Pipeline)
 
-The assessment asks for Google Stitch to generate UI mockups. Here is exactly how we used it:
+The assessment asks for Google Stitch to generate UI mockups. Here is exactly how I used it:
 
 **Step 1: Template design with Google Stitch**
 
-We used the Google Stitch MCP (Model Context Protocol) integration inside our code editor to generate high-fidelity HTML/CSS templates that look like real YQN Pay app screens. Google Cloud billing was enabled using the $300 free credit to access Stitch.
+I used the Google Stitch MCP (Model Context Protocol) integration inside my code editor to generate high-fidelity HTML/CSS templates that look like real YQN Pay app screens. Google Cloud billing was enabled using the $300 free credit to access Stitch.
 
 Stitch generated two templates:
 - **Merchant template** (`assets/ui/merchant/`) — a 1200×1200 square layout mimicking a fintech merchant dashboard, designed for Facebook/WhatsApp ad format
@@ -431,11 +431,11 @@ This means **every campaign gets a unique, dynamically generated app screen** �
 - **LLM-agnostic design** — The AI logic lives in one file (`llm_service.py`). Switching from Groq to OpenAI or Anthropic means changing one file, not rewriting the pipeline.
 
 **Cost-conscious decisions:**
-- **Python over Node.js** — Groq SDK, gTTS, and Playwright all have mature Python support. FastAPI gives us type safety and auto-generated docs. All dependencies are free and open-source.
-- **Groq (free tier) over OpenAI (paid)** — Groq offers free-tier access to Llama 3.3 70B with sub-2-second inference. This let us build and iterate without any API costs.
+- **Python over Node.js** — Groq SDK, gTTS, and Playwright all have mature Python support. FastAPI gives type safety and auto-generated docs. All dependencies are free and open-source.
+- **Groq (free tier) over OpenAI (paid)** — Groq offers free-tier access to Llama 3.3 70B with sub-2-second inference. This let me build and iterate without any API costs.
 - **gTTS (free) over ElevenLabs (paid)** — gTTS produces acceptable prototype-quality voice output at zero cost. The code is structured so swapping to ElevenLabs is a single-file change.
 - **FFmpeg (free) over Kling/Veo (paid)** — Deterministic output, no GPU needed, no API rate limits. AI video generation adds cost and unpredictability that is unnecessary for a POC.
-- **Google Stitch (free $300 credit) for design, Playwright (free) for rendering** — We used Stitch to design the templates once, then Playwright automates screenshot generation indefinitely at zero ongoing cost.
+- **Google Stitch (free $300 credit) for design, Playwright (free) for rendering** — I used Stitch to design the templates once, then Playwright automates screenshot generation indefinitely at zero ongoing cost.
 - **Distribution drafts (free) over live Meta/WhatsApp API calls (paid + requires business verification)** — The distribution service generates fully structured, ready-to-send drafts. Plugging into the real APIs is a deployment step, not an architecture change.
 
 **Total cost to build and run this POC: $0.**
