@@ -31,7 +31,7 @@ Input (product + audience)
 Output (JSON + Markdown files in output/)
 ```
 
-Each agent uses `withStructuredOutput()` with a Zod schema to guarantee typed, validated responses — no post-processing hacks.
+Each agent uses `withStructuredOutput()` with a Zod schema to guarantee typed, validated responses, no post-processing hacks.
 
 ---
 
@@ -93,7 +93,7 @@ Remote knowledge workers aged 25–40, primarily in tech and creative fields, wh
 - Jabra Evolve2 85
 
 **Market Positioning**
-FocusFlow Pro is not just noise cancellation — it's a productivity tool engineered specifically for remote work, combining hardware ANC with an AI soundscape layer that adapts to your work mode.
+FocusFlow Pro is not just noise cancellation, it's a productivity tool engineered specifically for remote work, combining hardware ANC with an AI soundscape layer that adapts to your work mode.
 
 **Key Insights**
 - Remote workers don't buy headphones, they buy back their concentration
@@ -109,13 +109,13 @@ FocusFlow Pro is not just noise cancellation — it's a productivity tool engine
 **Your home office just got a focus upgrade.**
 
 ##### Subheadline
-FocusFlow Pro blocks distractions before they reach your ears — so you can stay in flow, no matter what's happening around you.
+FocusFlow Pro blocks distractions before they reach your ears, so you can stay in flow, no matter what's happening around you.
 
 ##### Body Text
-Remote work is great until the dog barks mid-Zoom or your partner starts a call in the next room. FocusFlow Pro combines adaptive active noise cancellation with AI-tuned soundscapes that respond to your work mode. The result: fewer interruptions, deeper focus, and calls where you sound like you're in a professional studio — every time.
+Remote work is great until the dog barks mid-Zoom or your partner starts a call in the next room. FocusFlow Pro combines adaptive active noise cancellation with AI-tuned soundscapes that respond to your work mode. The result: fewer interruptions, deeper focus, and calls where you sound like you're in a professional studio every time.
 
 ##### Call to Action
-> Reclaim your focus — try FocusFlow Pro risk-free for 30 days
+> Reclaim your focus, try FocusFlow Pro risk-free for 30 days
 
 ##### Platform Ad Variants
 
@@ -154,7 +154,7 @@ Remote work is great until the dog barks mid-Zoom or your partner starts a call 
 ##### Improvements
 - Google ad could lead with the problem rather than the solution for higher CTR
 - Email subject line should test a question format to boost open rates
-- Body text paragraph 2 is slightly technical — simplify for a broader audience
+- Body text paragraph 2 is slightly technical, simplify for a broader audience
 
 ##### Revised Headline
 **Stop losing hours to interruptions. FocusFlow Pro keeps you in the zone.**
