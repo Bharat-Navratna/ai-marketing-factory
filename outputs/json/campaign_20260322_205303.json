@@ -1,0 +1,71 @@
+{
+  "merchant": {
+    "languages": [
+      "French",
+      "Moroccan Darija"
+    ],
+    "tone": "professional, trust-based",
+    "headline": "Retirez vos fonds instantanément avec YQN Pay, sans frais ! سحب أموالك بسرعة مع YQN Pay, بدون رسوم",
+    "primary_script": "Désormais, avec YQN Pay, vous pouvez retirer vos fonds instantanément depuis n'importe quelle agence locale, sans frais. خالي من الرسوم, سحب اموالك بسرعة من اي وكالة محلية مع YQN Pay. Simplifiez vos transactions et gérez votre business avec confiance.",
+    "hashtags": [
+      "YQNPAY",
+      "PaiementFacile",
+      "سحب_فوري",
+      "MercantServices",
+      " PaiementEnLigne"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "Facebook",
+        "WhatsApp"
+      ],
+      "interests": [
+        "commerce électronique",
+        "services financiers",
+        "gestion de entreprise"
+      ],
+      "geo": [
+        "Maroc",
+        "Casablanca",
+        "Rabat"
+      ],
+      "audience_notes": [
+        "petites et moyennes entreprises",
+        "commerçants en ligne",
+        "entrepreneurs marocains"
+      ]
+    }
+  },
+  "consumer": {
+    "languages": [
+      "Moroccan Darija"
+    ],
+    "tone": "high-energy, street-smart",
+    "headline": "خليك متحرر مع ياكين بي",
+    "primary_script": "حنا جايين ليكم بخبر سار! مع ياكين بي، ممكن تخرج فلوسك ديركت من أي وكالة محليّة بلا مصاريف! لا مزيد من الانتظار، لا مزيد من الشك! خليك متحرر مع ياكين بي",
+    "hashtags": [
+      "#ياكين_بي",
+      "#دفع_الكتروني",
+      "#بلا_مصاريف",
+      "#تجار_مغاربة",
+      "#اختر_حرية_الدفع"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "TikTok",
+        "Instagram Reels"
+      ],
+      "interests": [
+        "تجارة إلكترونية",
+        "خدمات مالية"
+      ],
+      "geo": [
+        "المغرب"
+      ],
+      "audience_notes": [
+        "شباب مغاربة",
+        "تجار محليون"
+      ]
+    }
+  }
+}

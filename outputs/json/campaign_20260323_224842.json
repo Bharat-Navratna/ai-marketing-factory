@@ -1,0 +1,70 @@
+{
+  "merchant": {
+    "languages": [
+      "French",
+      "Moroccan Darija"
+    ],
+    "tone": "professional, trust-based",
+    "headline": "Boostez vos ventes avec nos solutions de commerce électronique pour les PME marocaines",
+    "primary_script": "As-salamu alaykum, les entrepreneurs marocains ! Nous sommes là pour vous aider à développer votre entreprise grâce à nos outils de commerce en ligne. Découvrez comment augmenter vos ventes et atteindre de nouveaux clients avec nos solutions personnalisées. Kayn mzyan !",
+    "hashtags": [
+      "#CommerceÉlectronique",
+      "#PME-Maroc",
+      "#MarketingEnLigne",
+      "#EntrepreneuriatMarocain",
+      "#DéveloppementÉconomique"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "Facebook",
+        "WhatsApp"
+      ],
+      "interests": [
+        "commerce électronique",
+        "marketing numérique",
+        "entrepreneuriat"
+      ],
+      "geo": [
+        "Maroc",
+        "Casablanca",
+        "Rabat"
+      ],
+      "audience_notes": [
+        "Petites et moyennes entreprises marocaines",
+        "Entrepreneurs marocains",
+        "Professionnels du marketing et du commerce électronique"
+      ]
+    }
+  },
+  "consumer": {
+    "languages": [
+      "Moroccan Darija"
+    ],
+    "tone": "high-energy, street-smart",
+    "headline": "خبار سوق المغرب!",
+    "primary_script": "يا شباب، يا بنات! لقد جاء وقت للتغيير! استعدوا لاكتشاف الجديد في السوق المغربي! #سوق_المغرب #تجارة_الجملة #شراء_بثقة #مغرب_تجاري #تجارتنا",
+    "hashtags": [
+      "سوق_المغرب",
+      "تجارة_الجملة",
+      "شراء_بثقة",
+      "مغرب_تجاري",
+      "تجارتنا"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "TikTok",
+        "Instagram Reels"
+      ],
+      "interests": [
+        "تجارة"
+      ],
+      "geo": [
+        "المغرب"
+      ],
+      "audience_notes": [
+        "شباب مغاربة",
+        "سكان المدن"
+      ]
+    }
+  }
+}

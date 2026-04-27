@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ css_file_uri }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navigation -->
+        <header class="top-nav">
+            <div class="user-greeting">
+                <span class="label-sm">{{ greeting_text }}</span>
+                <h1 class="headline-md">{{ user_name }}</h1>
+            </div>
+            <div class="profile-btn">
+                <img src="{{ profile_image_url }}" alt="{{ profile_image_alt }}" class="profile-img">
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Balance Card -->
+            <section class="balance-card">
+                <span class="label-sm primary-text">{{ badge_text }}</span>
+                <h2 class="display-lg">{{ headline }}<span class="currency">{{ market_label }}</span></h2>
+                <div class="card-actions">
+                    <button class="btn btn-primary">{{ cta_text }}</button>
+                    <button class="btn btn-secondary">{{ secondary_cta_text }}</button>
+                </div>
+            </section>
+
+            <!-- Main Promo / Quick Actions -->
+            <section class="quick-pay-section">
+                <h3 class="headline-md">{{ section_title }}</h3>
+                <div class="stories-container">
+                    <div class="story">
+                        <div class="story-ring add-new">
+                            <div class="story-avatar">{{ story_1_icon }}</div>
+                        </div>
+                        <span class="body-sm">{{ story_1_label }}</span>
+                    </div>
+                    <div class="story">
+                        <div class="story-ring">
+                            <img src="{{ story_2_image_url }}" alt="{{ story_2_label }}" class="story-avatar">
+                        </div>
+                        <span class="body-sm">{{ story_2_label }}</span>
+                    </div>
+                    <div class="story">
+                        <div class="story-ring">
+                            <img src="{{ story_3_image_url }}" alt="{{ story_3_label }}" class="story-avatar">
+                        </div>
+                        <span class="body-sm">{{ story_3_label }}</span>
+                    </div>
+                    <div class="story">
+                        <div class="story-ring">
+                            <img src="{{ story_4_image_url }}" alt="{{ story_4_label }}" class="story-avatar">
+                        </div>
+                        <span class="body-sm">{{ story_4_label }}</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Promo Message Cards -->
+            <section class="activity-section">
+                <div class="section-header">
+                    <h3 class="headline-md">{{ supporting_title }}</h3>
+                </div>
+                <div class="activity-list">
+                    <div class="activity-card">
+                        <div class="activity-info">
+                            <div class="activity-icon {{ card_1_icon_class }}">{{ card_1_icon }}</div>
+                            <div class="activity-text">
+                                <h4 class="body-lg">{{ card_1_title }}</h4>
+                                <p class="body-sm text-dim">{{ card_1_text }}</p>
+                            </div>
+                        </div>
+                        <div class="activity-amount">{{ card_1_badge }}</div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-info">
+                            <div class="activity-icon {{ card_2_icon_class }}">{{ card_2_icon }}</div>
+                            <div class="activity-text">
+                                <h4 class="body-lg">{{ card_2_title }}</h4>
+                                <p class="body-sm text-dim">{{ card_2_text }}</p>
+                            </div>
+                        </div>
+                        <div class="activity-amount text-primary">{{ card_2_badge }}</div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-info">
+                            <div class="activity-icon {{ card_3_icon_class }}">{{ card_3_icon }}</div>
+                            <div class="activity-text">
+                                <h4 class="body-lg">{{ card_3_title }}</h4>
+                                <p class="body-sm text-dim">{{ card_3_text }}</p>
+                            </div>
+                        </div>
+                        <div class="activity-amount">{{ card_3_badge }}</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Glassmorphism Bottom Nav -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active">
+                <span class="icon">{{ nav_icon_1 }}</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="icon">{{ nav_icon_2 }}</span>
+            </a>
+            <div class="scan-btn-wrapper">
+                <button class="scan-btn" aria-label="{{ scan_button_label }}">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="scan-icon">
+                        <path d="M4 8V6C4 4.89543 4.89543 4 6 4H8M16 4H18C19.1046 4 20 4.89543 20 6V8M4 16V18C4 19.1046 4.89543 20 6 20H8M16 20H18C19.1046 20 20 19.1046 20 18V16" stroke="#004734" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <a href="#" class="nav-item">
+                <span class="icon">{{ nav_icon_3 }}</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="icon">{{ nav_icon_4 }}</span>
+            </a>
+        </nav>
+    </div>
+</body>
+</html>

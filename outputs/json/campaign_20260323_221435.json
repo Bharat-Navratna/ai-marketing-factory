@@ -1,0 +1,69 @@
+{
+  "merchant": {
+    "languages": [
+      "French",
+      "Moroccan Darija"
+    ],
+    "tone": "professional, trust-based",
+    "headline": "Nouvelles Opportunités pour les PME Marocaines",
+    "primary_script": "As-salamu alaykum, les propriétaires de PME marocaines ! Nous sommes ravis de vous annoncer de nouvelles mises à jour pour améliorer vos ventes et votre visibilité sur le marché. Découvrez comment nous pouvons vous aider à atteindre vos objectifs commerciaux. شريكونا في رحلة النجاح",
+    "hashtags": [
+      "#PME_Maroc",
+      "#Commerce_Electronique",
+      "#Marketing_Digital",
+      "#Entrepreneuriat_Marocain",
+      "#Croissance_Economique"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "Facebook",
+        "WhatsApp"
+      ],
+      "interests": [
+        "Commerce",
+        "Entrepreneuriat",
+        "Marketing"
+      ],
+      "geo": [
+        "Maroc"
+      ],
+      "audience_notes": [
+        "Petites et moyennes entreprises marocaines",
+        "Propriétaires d'entreprises",
+        "Gérants de commerce électronique"
+      ]
+    }
+  },
+  "consumer": {
+    "languages": [
+      "Moroccan Darija"
+    ],
+    "tone": "high-energy, street-smart",
+    "headline": "اخبار جديدة! استعداد لتحديث أعمالنا",
+    "primary_script": "كايديروا معانا! غادي نديرو تحديث كبيرو ف أعمالنا. غادي نوجدو ليكم بكل جديد و مفيد. لا تنساو تابعونا",
+    "hashtags": [
+      "#مغرب",
+      "#أعمال_جديدة",
+      "#تحديث_أعمال",
+      "#تجارة_مغربية",
+      "#مغاربة"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "TikTok",
+        "Instagram Reels"
+      ],
+      "interests": [
+        "تجارة",
+        "أعمال"
+      ],
+      "geo": [
+        "المغرب"
+      ],
+      "audience_notes": [
+        "شباب",
+        "سكان المدن"
+      ]
+    }
+  }
+}

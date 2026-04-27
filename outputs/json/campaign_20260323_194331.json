@@ -1,0 +1,71 @@
+{
+  "merchant": {
+    "languages": [
+      "French",
+      "Moroccan Darija"
+    ],
+    "tone": "professional, trust-based",
+    "headline": "Retirez vos fonds instantanément avec YQN Pay, sans frais ! سحب أموالك بسرعة مع يكن باي بدون رسوم",
+    "primary_script": "Désormais, vous pouvez retirer vos fonds instantanément de n'importe quelle agence locale avec YQN Pay, sans frais ! الخدمات المصرفية أصبحت أسهل مع يكن باي. سحب أموالك بسرعة وبدون رسوم. انضم إلى يكن باي اليوم mismo وتمتع بسهولة سحب الأموال",
+    "hashtags": [
+      "YQNPAY",
+      "ServicesFinanciers",
+      "سحب_أموالك",
+      "PaiementEnLigne",
+      "مصرف_الاعمال"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "Facebook",
+        "WhatsApp"
+      ],
+      "interests": [
+        "commerce électronique",
+        "services financiers",
+        "petites entreprises"
+      ],
+      "geo": [
+        "Maroc",
+        "Casablanca",
+        "Rabat"
+      ],
+      "audience_notes": [
+        "Petites et moyennes entreprises marocaines",
+        "Commerçants en ligne",
+        "Utilisateurs de services financiers"
+      ]
+    }
+  },
+  "consumer": {
+    "languages": [
+      "Moroccan Darija"
+    ],
+    "tone": "high-energy, street-smart",
+    "headline": "خليك فلوسك عندك دائما!",
+    "primary_script": "كلو عادي مع YQN Pay! هاديك اللي كتخاف من الرسوم كتقلب فلوسك؟ مابغاتش تنتظر؟ عطينا حل! مع YQN Pay كتستافد من سحب فلوسك فوري من أي وكالة محلية بلا رسوم!",
+    "hashtags": [
+      "YQNPAY",
+      "سحب_فوري",
+      "بلا_رسوم",
+      "تجار_مغاربة",
+      "خدمات_مالية_متقدمة"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "TikTok",
+        "Instagram Reels"
+      ],
+      "interests": [
+        "تجارة_الكترونية",
+        "خدمات_مالية"
+      ],
+      "geo": [
+        "المغرب"
+      ],
+      "audience_notes": [
+        "شباب_سوق",
+        "تجار_صغار"
+      ]
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "merchant": {
+    "languages": [
+      "French",
+      "Moroccan Darija"
+    ],
+    "tone": "professional, trust-based",
+    "headline": "Boostez vos ventes avec nos dernières mises à jour pour les PME marocaines",
+    "primary_script": "As-salamu alaykum, les propriétaires de PME marocaines. Nous sommes heureux de vous annoncer nos dernières mises à jour pour améliorer vos ventes et votre présence en ligne. Découvrez comment vous pouvez augmenter vos revenus et atteindre de nouveaux clients avec nos outils et services. Had chi ghadi ykhassek men tayyara dyal l'entreprise, kheddam had l'outil li ghadi ykhedmeck",
+    "hashtags": [
+      "PME_Maroc",
+      "Commerce_Electronique",
+      "Marketing_En_Ligne",
+      "Entrepreneuriat_Au_Maroc",
+      "Developpement_Economique"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "Facebook",
+        "WhatsApp"
+      ],
+      "interests": [
+        "Entrepreneuriat",
+        "Marketing",
+        "Commerce"
+      ],
+      "geo": [
+        "Maroc"
+      ],
+      "audience_notes": [
+        "Petites et moyennes entreprises marocaines",
+        "Propriétaires d'entreprises",
+        "Gérants de commerce en ligne"
+      ]
+    }
+  },
+  "consumer": {
+    "languages": [
+      "Moroccan Darija"
+    ],
+    "tone": "high-energy, street-smart",
+    "headline": "خبار سارة لزباين المراكش!",
+    "primary_script": "آش حنا عاينين دابا؟ حنا غادي نكبر ونتطور! غادي نضيف منتجات جديدة وخدمات ممتازة لزبايننا الأعزاء. تابعونا وستاشر معانا!",
+    "hashtags": [
+      "#اكسبلور_المغرب",
+      "#زباين_مراكش",
+      "#تجارة_الكترونية",
+      "#اخبار_تجارية",
+      "#المغرب_ينت"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "TikTok",
+        "Instagram Reels"
+      ],
+      "interests": [
+        "تجارة"
+      ],
+      "geo": [
+        "المغرب"
+      ],
+      "audience_notes": [
+        "شباب مراكش"
+      ]
+    }
+  }
+}

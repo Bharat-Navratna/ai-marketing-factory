@@ -1,0 +1,67 @@
+{
+  "merchant": {
+    "languages": [
+      "French",
+      "Moroccan Darija"
+    ],
+    "tone": "professional, trust-based",
+    "headline": "Mise à jour de votre entreprise : Boostez votre croissance avec nous !",
+    "primary_script": "As-salamu alaykum, les propriétaires de PME marocaines ! Nous sommes là pour vous aider à développer votre entreprise. Découvrez comment notre mise à jour peut vous aider à améliorer vos ventes et à atteindre de nouveaux clients. En français et en darija, nous sommes à votre écoute pour répondre à vos besoins.",
+    "hashtags": [
+      "PME_Maroc",
+      "Marketing_Au_Maroc",
+      "Croissance_Economique",
+      "Entrepreneuriat_Au_Maroc",
+      "Développement_Des_Affaires"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "Facebook",
+        "WhatsApp"
+      ],
+      "interests": [
+        "Entrepreneuriat",
+        "Marketing",
+        "Développement des affaires"
+      ],
+      "geo": [
+        "Maroc"
+      ],
+      "audience_notes": [
+        "Petites et moyennes entreprises",
+        "Propriétaires d'entreprises",
+        "Dirigeants d'entreprise"
+      ]
+    }
+  },
+  "consumer": {
+    "languages": [
+      "Moroccan Darija"
+    ],
+    "tone": "high-energy, street-smart",
+    "headline": "معلومات جديدة عن الشركة!",
+    "primary_script": "السلام عليكم، شباب! عندنا أخبار سارة! الشركة دابا كتطور وكتحسن من خدماتها. هادشي معناوه انك غادي تلقى منتجات أحسن وأسعار تنافسية!",
+    "hashtags": [
+      "#مغرب",
+      "#تجارة_الكترونية",
+      "#شركات_مغربية",
+      "#تطوير_الشركات",
+      "#أخبار_морوكو"
+    ],
+    "targeting_profile": {
+      "platforms": [
+        "TikTok",
+        "Instagram Reels"
+      ],
+      "interests": [
+        "تجارة"
+      ],
+      "geo": [
+        "المغرب"
+      ],
+      "audience_notes": [
+        "شباب مغاربة"
+      ]
+    }
+  }
+}
