@@ -1,6 +1,5 @@
-import { ChatOpenAI } from "@langchain/openai";
 import { z } from "zod";
-import { env } from "../config/env";
+import { createChatModel } from "../config/llm";
 
 const merchantSchema = z.object({
   platforms: z.array(z.string()),
@@ -31,11 +30,7 @@ const localizationSchema = z.object({
 export type LocalizationOutput = z.infer<typeof localizationSchema>;
 
 function getModel() {
-  return new ChatOpenAI({
-    apiKey: env.OPENAI_API_KEY,
-    model: "gpt-4.1-mini",
-    temperature: 0.7,
-  });
+  return createChatModel(0.7);
 }
 
 export async function generateLocalizedCampaign(

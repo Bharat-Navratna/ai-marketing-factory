@@ -1,79 +1,106 @@
-# AI Marketing Agent
+# AI Campaign Studio
 
-A multi-agent AI pipeline that generates research-backed marketing campaigns using LangChain and OpenAI.
+> A production-grade, multi-agent AI system that generates complete, export-ready marketing campaigns from a single brief.
+
+Originally prototyped with a workflow automation tool, then refactored into a custom TypeScript orchestration engine for better ownership, portability, and scalability.
 
 ---
 
-## How It Works
+## What It Does
 
-```
-Input (product + audience)
-        │
-        ▼
-┌─────────────────┐
-│  Research Agent │  ──► market insights (audience, pain points,
-│  gpt-4o-mini    │       competitors, positioning, key insights)
-└─────────────────┘
-        │
-        ▼
-┌─────────────────┐
-│   Copy Agent    │  ──► full copy package (headline, body, email,
-│  gpt-4o-mini    │       platform ad variants for Google/Meta/LinkedIn)
-└─────────────────┘
-        │
-        ▼
-┌─────────────────┐
-│  Review Agent   │  ──► scores (clarity, persuasiveness, audience
-│  gpt-4o-mini    │       alignment) + improvements + revised headline
-└─────────────────┘
-        │
-        ▼
-Output (JSON + Markdown files in output/)
-```
+You enter a brand name, product description, target audience, and campaign settings. Five AI agents work in sequence to produce a full marketing campaign:
 
 Each agent uses `withStructuredOutput()` with a Zod schema to guarantee typed, validated responses, no post-processing hacks.
 
+- Research report (market positioning, persona, competitor gaps)
+- Campaign strategy (core message, funnel, messaging angles)
+- Ad copy (headlines, email, social posts, platform variants)
+- Platform packages (Meta Ads + TikTok Ads, export-ready)
+- Quality review (scored on clarity, persuasion, and audience alignment)
+
+Everything is returned as structured JSON and displayed in a clean SaaS dashboard.
+
 ---
 
-## Features
+## Architecture
 
-- **3-agent pipeline**: Research → Copy → Review, each with a focused system prompt
-- **Structured outputs**: Every agent response is validated against a Zod schema via LangChain
-- **Platform-specific ad copy**: Google (90 chars), Meta (125 chars), LinkedIn (150 chars)
-- **Scored review**: Clarity, persuasiveness, and audience alignment scored 1–10 with actionable feedback
-- **Dual file output**: JSON (for programmatic use) and Markdown (for human reading)
-- **CLI interface**: Run campaigns from the terminal with `npm run generate`
-- **REST API**: Express server for integrating into other apps
-- **Past campaign browser**: `GET /api/campaigns` returns all previously generated campaigns
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    AI Campaign Studio                        │
+│                   (Next.js + Tailwind)                       │
+└───────────────────────┬─────────────────────────────────────┘
+                        │ POST /api/campaigns/generate
+                        ▼
+┌─────────────────────────────────────────────────────────────┐
+│              Express API  (TypeScript / Node.js)             │
+└───────────────────────┬─────────────────────────────────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────────────┐
+│           Custom TypeScript Orchestrator                     │
+│         (replaces the original n8n workflow)                 │
+│                                                              │
+│  1. Research Agent  ──►  Market, audience, competitors       │
+│       │                                                      │
+│       ▼                                                      │
+│  2. Strategy Agent  ──►  Positioning, persona, funnel        │
+│       │                                                      │
+│       ▼                                                      │
+│  3. Copy Agent      ──►  Headlines, email, ad variants       │
+│       │                                                      │
+│       ▼                                                      │
+│  4. Channel Agent   ──►  Meta Ads + TikTok packages         │
+│       │                                                      │
+│       ▼                                                      │
+│  5. Review Agent    ──►  Scores, strengths, improvements     │
+└─────────────────────────────────────────────────────────────┘
+                        │
+                        ▼
+              FullCampaign JSON  +  Export Package
+              (Meta-ready  ·  TikTok-ready  ·  Full JSON)
+```
 
 ---
 
 ## Tech Stack
 
-| Tool | Purpose |
-|------|---------|
-| TypeScript | Type-safe development |
-| LangChain (`@langchain/core`, `@langchain/openai`) | Agent orchestration and chain composition |
-| OpenAI (`gpt-4o-mini`) | Language model for all three agents |
-| Zod | Schema definition and structured output validation |
-| Commander | CLI argument parsing |
-| Express | HTTP API server |
-| dotenv | Environment variable management |
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js 14 · React 18 · Tailwind CSS |
+| Backend | Node.js · Express 5 · TypeScript |
+| AI / LLM | LangChain · Gemini 2.5 Flash via Google AI API (Grok/xAI supported as fallback) |
+| Validation | Zod (all agent inputs and outputs) |
+| CLI | Commander.js |
+| Output | Structured JSON · Markdown reports |
 
 ---
 
-## Example Output
+## How It Works
 
-Below is a sample Markdown report generated for a fictional product.
+### 1. Research Agent
+Takes the brand brief and runs a deep market analysis. Output: audience profile, pain points, desires, competitor mapping, market opportunity, and key insights. Temperature: 0.3 (analytical).
+
+### 2. Strategy Agent
+Takes the research and builds campaign strategy. Output: core message, unique value proposition, positioning statement, messaging angles, funnel strategy (awareness → consideration → conversion), and a detailed customer persona. Temperature: 0.6 (strategic + creative).
+
+### 3. Copy Agent
+Takes the strategy and writes all copy assets. Output: headline, subheadline, body text, CTA, email (subject + body), social post ideas, and platform-specific ad variants with character counts enforced per platform (Google 90, Meta 125, TikTok 100, LinkedIn 150). Temperature: 0.7 (creative).
+
+### 4. Channel Planning Agent
+Takes everything above and builds export-ready ad packages. Output: Meta Ads package (creative brief, audience targeting, placements, budget), TikTok Ads package (hook, video script, on-screen text, sound strategy), 4-week content calendar, budget breakdown, and KPIs. Temperature: 0.5 (balanced).
+
+### 5. Review Agent
+Takes the copy and evaluates it. Output: scores (1–10) for clarity, persuasiveness, and audience alignment, with specific strengths, improvement suggestions, and a revised headline. Temperature: 0.3 (critical).
 
 ---
 
-### AI Campaign Report: FocusFlow Pro
+## Export Campaign Package
 
-**Generated:** 4/27/2026, 10:14:32 AM
-**Target Audience:** Remote workers who struggle with home office distractions
+Since direct API publishing to Meta and TikTok is not implemented in this version, the system produces **export-ready packages** you can manually upload into Ads Manager:
 
----
+- `{brand}-meta-ads.json`: Facebook + Instagram creative brief
+- `{brand}-tiktok-ads.json`: TikTok Ads Manager structure
+- `{brand}-campaign.json`: Full campaign JSON
 
 #### Research Insights
 
@@ -158,89 +185,129 @@ Remote work is great until the dog barks mid-Zoom or your partner starts a call 
 
 ##### Revised Headline
 **Stop losing hours to interruptions. FocusFlow Pro keeps you in the zone.**
+=======
+Each package includes audience targeting parameters, creative copy, budget recommendations, and estimated reach.
 
 ---
 
 ## Getting Started
 
-**Prerequisites:** Node.js 18+, an OpenAI API key
+### Prerequisites
+- Node.js 18+
+- Gemini API key (Google AI Studio) or a Grok/xAI API key as alternative
 
+### 1. Clone and install backend
 ```bash
-# 1. Clone the repo
-git clone https://github.com/your-username/ai-marketing-agent.git
-cd ai-marketing-agent
-
-# 2. Install dependencies
+git clone <repo>
+cd ai-campaign-factory
 npm install
-
-# 3. Set up environment variables
 cp .env.example .env
-# Open .env and add your OPENAI_API_KEY
-
-# 4. Generate your first campaign
-npm run generate -- --product "Your Product" --audience "Your Audience"
+# Add your GEMINI_API_KEY to .env
 ```
 
-### CLI Options
-
-```
-Usage: npm run generate -- [options]
-
-Required:
-  --product <name>        Product name
-  --audience <desc>       Target audience description
-
-Optional:
-  --no-save               Skip saving output files
-  --verbose               Print full JSON result to console
-  -V, --version           Display version number
-  -h, --help              Display help
-```
-
-**Example:**
+### 2. Start the API
 ```bash
-npm run generate -- --product "Wireless Earbuds" --audience "Gen Z fitness enthusiasts"
+npm run api
+# Runs on http://localhost:3001
 ```
+
+### 3. Install and start the frontend
+```bash
+npm run frontend:install
+npm run frontend
+# Runs on http://localhost:3002
+```
+
+Open [http://localhost:3002](http://localhost:3002) to use the studio.
 
 ---
 
-## API Usage
+## Environment Variables
 
-Start the server:
-```bash
-npm run api
-# Server running at http://localhost:3000
-```
-
-### POST /api/generate
-
-Generate a campaign and save it to disk.
+Copy `.env.example` to `.env` and configure:
 
 ```bash
-curl -X POST http://localhost:3000/api/generate \
-  -H "Content-Type: application/json" \
-  -d '{"product": "Wireless Earbuds", "audience": "Gen Z fitness enthusiasts"}'
+# Primary provider (Gemini)
+GEMINI_API_KEY=your-gemini-api-key
+AI_PROVIDER=gemini
+MODEL_NAME=gemini-2.5-flash
+GEMINI_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai/
+
+# Alternative provider (Grok/xAI)
+# AI_PROVIDER=grok
+# GROK_API_KEY=xai-...
+# GROK_BASE_URL=https://api.x.ai/v1
+
+PORT=3001
+CORS_ORIGIN=http://localhost:3002
+NEXT_PUBLIC_API_URL=http://localhost:3001
+
+# Future integrations (not yet implemented)
+ELEVENLABS_API_KEY=
+META_GRAPH_API_KEY=
+WHATSAPP_CLOUD_API_KEY=
+KLING_API_KEY=
 ```
 
-**Response:** Full `CampaignResult` JSON object.
+The `src/config/env.ts` module auto-detects the provider and selects the correct API key and base URL.
 
-**Error responses:**
-- `400` — missing or invalid `product` / `audience` fields
-- `500` — pipeline failure (check server logs for which agent failed)
+---
 
-### GET /api/health
+## API Reference
 
-```bash
-curl http://localhost:3000/api/health
-# {"status":"ok","timestamp":"2026-04-27T10:00:00.000Z"}
+### POST /api/campaigns/generate
+
+Generate a full campaign using the 5-agent orchestrator.
+
+**Request body:**
+```json
+{
+  "brandName": "Lumiere",
+  "productDescription": "A luxury anti-aging serum...",
+  "industry": "Beauty & Skincare",
+  "objective": "sales_conversion",
+  "targetAudience": "Women aged 35-55...",
+  "region": "United States",
+  "tone": "luxury",
+  "platforms": ["meta_ads", "instagram"],
+  "competitors": "La Mer, SK-II",
+  "budget": "$5,000/month",
+  "duration": "4 weeks"
+}
 ```
+
+**Valid objectives:** `brand_awareness` · `lead_generation` · `sales_conversion` · `app_installs` · `engagement` · `retargeting`
+
+**Valid tones:** `professional` · `playful` · `luxury` · `urgent` · `inspirational` · `educational`
+
+**Valid platforms:** `meta_ads` · `instagram` · `facebook` · `tiktok` · `linkedin`
+
+**Response:** `FullCampaign` object (see `src/schemas/campaign.schemas.ts`)
+
+---
 
 ### GET /api/campaigns
+Returns all saved full campaigns from `output/full/`.
 
-Returns an array of all previously generated campaigns from the `output/` directory.
+### GET /api/health
+Returns `{ status: "ok", timestamp }`.
+
+### POST /api/generate *(legacy)*
+Simplified 3-field interface. Body: `{ product, audience }`. Returns `CampaignResult`.
+
+### GET /api/campaigns/legacy *(legacy)*
+Returns all campaigns saved via the legacy pipeline from `output/`.
+
+---
+
+## CLI Usage
 
 ```bash
-curl http://localhost:3000/api/campaigns
+npm run generate -- --product "Lumiere Serum" --audience "Women 35-55, luxury beauty enthusiasts"
+
+# Options
+--no-save    Skip saving output to disk
+--verbose    Print full JSON to console
 ```
 
 ---
@@ -248,26 +315,188 @@ curl http://localhost:3000/api/campaigns
 ## Project Structure
 
 ```
-ai-marketing-agent/
+ai-campaign-factory/
 ├── src/
 │   ├── agents/
-│   │   ├── research.agent.ts   # Market research agent
-│   │   ├── copy.agent.ts       # Copywriting agent
-│   │   └── review.agent.ts     # Copy review & scoring agent
-│   ├── api/
-│   │   └── server.ts           # Express HTTP API
-│   ├── chains/                 # LangChain chain definitions (extensible)
-│   ├── cli/
-│   │   └── index.ts            # Commander CLI entry point
-│   ├── prompts/                # Prompt templates (extensible)
+│   │   ├── research.agent.ts        # Agent 1: market research
+│   │   ├── strategy.agent.ts        # Agent 2: campaign strategy
+│   │   ├── copy.agent.ts            # Agent 3: copywriting
+│   │   ├── channelPlanning.agent.ts # Agent 4: Meta + TikTok packages
+│   │   ├── review.agent.ts          # Agent 5: quality review
+│   │   └── localizationAgent.ts     # Morocco market localization (French + Darija)
+│   ├── orchestrator/
+│   │   └── campaignOrchestrator.ts  # Custom orchestrator (replaces n8n)
 │   ├── schemas/
-│   │   └── campaign.schemas.ts # Zod schemas for all structured outputs
+│   │   └── campaign.schemas.ts      # Zod schemas for all agent I/O
+│   ├── api/
+│   │   └── server.ts                # Express API
+│   ├── cli/
+│   │   └── index.ts                 # Commander CLI
 │   ├── utils/
-│   │   └── saveOutput.ts       # File saving utility (JSON + Markdown)
-│   └── pipeline.ts             # Pipeline orchestrator
-├── output/                     # Generated campaigns (gitignored)
-├── .env.example
-├── package.json
-├── tsconfig.json
-└── README.md
+│   │   └── saveOutput.ts            # JSON + Markdown file output
+│   ├── services/
+│   │   ├── distributionService.ts   # Distribution integrations (WIP)
+│   │   ├── elevenLabsService.ts     # ElevenLabs voice (WIP)
+│   │   ├── klingService.ts          # Kling video (WIP)
+│   │   └── stitchService.ts         # Video stitch (WIP)
+│   ├── config/
+│   │   ├── env.ts                   # Environment variable loader + provider detection
+│   │   └── llm.ts                   # LangChain ChatOpenAI model factory
+│   ├── index.ts                     # Entry point (localizationAgent demo)
+│   └── pipeline.ts                  # Legacy 3-agent wrapper
+├── frontend/
+│   ├── app/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx                 # Studio main page
+│   │   └── globals.css
+│   ├── components/
+│   │   ├── CampaignForm.tsx         # Input form + 4 demo presets
+│   │   ├── PipelineProgress.tsx     # Live stage indicator
+│   │   ├── CampaignDashboard.tsx    # 10-tab result dashboard
+│   │   └── ExportSection.tsx        # Export JSON + download
+│   └── lib/
+│       ├── types.ts                 # Shared TypeScript types
+│       ├── api.ts                   # API client
+│       └── presets.ts               # Demo presets
+├── api/                             # Python FastAPI (media gen, separate stack)
+│   ├── app.py
+│   ├── schemas/
+│   ├── prompts/
+│   └── services/
+└── outputs/                         # Generated campaign files (gitignored)
 ```
+
+---
+
+## Demo Presets
+
+| Preset | Industry | Objective | Tone |
+|---|---|---|---|
+| Lumiere (Luxury Skincare) | Beauty | Sales Conversion | Luxury |
+| FitFlow AI (Fitness App) | Health & Fitness | App Installs | Inspirational |
+| Altitude Roast (Coffee) | Food & Beverage | Lead Generation | Professional |
+| Taskflow AI (SaaS) | Productivity | Lead Generation | Professional |
+
+---
+
+## Why I Built This
+
+I wanted to build something that demonstrates the full stack of modern AI engineering: not just calling an LLM, but designing a multi-agent system with structured outputs, schema validation, sequential orchestration, a real API, and a production-quality UI.
+
+The specific challenge I set myself: can a system turn a one-paragraph product brief into a campaign brief that a real media buyer could act on immediately?
+
+The answer, after building this, is mostly yes. The gaps (real API publishing, budget optimization via real ad data) are well-defined engineering problems, not fundamental blockers.
+
+---
+
+## Future Improvements
+
+- **Real Meta Ads API publishing**: Use the Meta Marketing API to push campaigns directly into Ads Manager. The export package structure is already aligned with the API's creative brief format.
+- **TikTok Ads Manager API**: TikTok's marketing API supports the same campaign > ad group > ad creative hierarchy the output currently produces.
+- **Streaming pipeline stages**: Use Server-Sent Events to push real stage updates from the orchestrator to the frontend in real time instead of the current client-side simulation.
+- **Campaign history and editing**: Persist campaigns to a database and allow users to iterate on specific sections without regenerating everything.
+- **RAG for competitive intelligence**: Ground the Research Agent in real-time web search results rather than relying solely on the model's training data.
+- **Multi-language support**: Extend the localization agent (already built for Moroccan French + Darija) to additional markets.
+- **Media generation**: Wire up the ElevenLabs, Kling, and video stitch services already scaffolded in `src/services/`.
+
+---
+
+## Resume Bullets
+
+- Built a production-grade multi-agent AI system orchestrating 5 specialized LangChain agents (Research, Strategy, Copy, Channel Planning, Review) in a custom TypeScript pipeline, replacing a workflow automation dependency with a portable, type-safe orchestration engine
+- Designed a schema-first architecture using Zod for end-to-end type safety across all LLM structured outputs, eliminating untyped JSON throughout the pipeline
+- Built a full-stack SaaS application (Next.js 14 + Tailwind + Express) featuring campaign generation, a 10-section result dashboard, and export-ready Meta/TikTok ad packages downloadable as JSON
+- Implemented platform-aware copywriting with enforced character limits (Google 90, Meta 125, TikTok 100) validated by the LLM at generation time, ensuring compliance with ad platform requirements
+
+---
+
+## Deployment
+
+### AWS EC2 with Nginx + PM2
+
+This project runs as two Node processes behind Nginx:
+
+- Backend Express API: `http://127.0.0.1:3001`
+- Frontend Next.js app: `http://127.0.0.1:3002`
+
+Install dependencies and build both apps on the EC2 instance:
+
+```bash
+npm ci
+npm run build
+
+cd frontend
+npm ci
+npm run build
+cd ..
+```
+
+Create a production `.env` in the project root:
+
+```bash
+GEMINI_API_KEY=your-gemini-api-key
+AI_PROVIDER=gemini
+MODEL_NAME=gemini-2.5-flash
+PORT=3001
+CORS_ORIGIN=https://your-domain.com
+NEXT_PUBLIC_API_URL=https://your-domain.com
+```
+
+Start the backend and frontend with PM2:
+
+```bash
+pm2 start npm --name ai-campaign-api -- start
+pm2 start npm --name ai-campaign-frontend --prefix frontend -- start
+pm2 save
+pm2 startup
+```
+
+Example Nginx reverse proxy:
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:3002;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+After enabling the site, reload Nginx:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+### Frontend (Next.js)
+For a separate frontend host such as Vercel or Netlify, build from the `frontend/` folder:
+
+```bash
+cd frontend
+npm run build
+```
+
+Set `NEXT_PUBLIC_API_URL` to the deployed backend URL and set backend `CORS_ORIGIN` to the frontend URL.
+
+---
+
+## License
+
+ISC. See [LICENSE.txt](LICENSE.txt)

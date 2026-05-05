@@ -1,33 +1,56 @@
-import { ChatOpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
-import { ResearchOutputSchema, ResearchOutput } from "../schemas/campaign.schemas";
+import { createChatModel } from "../config/llm";
+import { ResearchOutputSchema, ResearchOutput, CampaignInput } from "../schemas/campaign.schemas";
 
 const SYSTEM_PROMPT = `You are an expert market research analyst with deep expertise in consumer psychology,
-competitive analysis, and market positioning. Your job is to analyze products and their target audiences
-to produce actionable market research insights.
+competitive analysis, and market positioning.
 
-When given a product and target audience, you will:
-- Identify the specific target audience characteristics, behaviors, and demographics
-- Uncover key pain points and frustrations that audience experiences related to the product category
-- Research and identify 3-5 main competitors in the market
-- Define a clear market positioning strategy that differentiates this product
-- Extract 4-6 key insights that should directly inform the marketing campaign copy
+When given a brand, product description, target audience, and competitors, you will:
+- Build a detailed audience profile (demographics, psychographics, behaviors, platforms they use)
+- Uncover 4-6 specific pain points the audience experiences related to the product category
+- Identify 3-5 desires and aspirations that motivate this audience to buy
+- Research and name 3-5 real competitors in the market
+- Pinpoint 2-4 weaknesses of those competitors this brand can exploit
+- Define the market opportunity and the best open positioning
+- Extract 4-6 key insights that directly inform campaign strategy
 
-Be specific, evidence-based in your thinking, and provide insights that a copywriter can immediately use.`;
+Be specific and evidence-based. Every insight must be actionable for a strategist.`;
 
-export async function runResearchAgent(product: string, audience: string): Promise<ResearchOutput> {
-  const model = new ChatOpenAI({ model: "gpt-4o-mini", temperature: 0.3 });
+export async function runResearchAgent(input: CampaignInput): Promise<ResearchOutput> {
+  const model = createChatModel(0.3);
+
+  const competitorContext = input.competitors
+    ? `Known competitors: ${input.competitors}`
+    : "No competitors specified — identify the main ones.";
 
   const prompt = ChatPromptTemplate.fromMessages([
     ["system", SYSTEM_PROMPT],
     [
       "human",
-      `Conduct thorough market research for the following:\n\nProduct: {product}\nTarget Audience: {audience}\n\nProvide comprehensive market research insights that a copywriter can use to craft compelling campaigns.`,
+      `Conduct thorough market research for this campaign:
+
+Brand: {brandName}
+Product/Service: {productDescription}
+Industry: {industry}
+Target Audience: {targetAudience}
+Region: {region}
+Campaign Objective: {objective}
+{competitorContext}
+
+Provide comprehensive market research insights the strategy team can act on immediately.`,
     ],
   ]);
 
   const structured = model.withStructuredOutput(ResearchOutputSchema);
   const chain = prompt.pipe(structured);
 
-  return await chain.invoke({ product, audience });
+  return await chain.invoke({
+    brandName: input.brandName,
+    productDescription: input.productDescription,
+    industry: input.industry,
+    targetAudience: input.targetAudience,
+    region: input.region,
+    objective: input.objective,
+    competitorContext,
+  });
 }

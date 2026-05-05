@@ -1,8 +1,10 @@
 import { CampaignResult } from "./schemas/campaign.schemas";
-import { runResearchAgent } from "./agents/research.agent";
-import { runCopyAgent } from "./agents/copy.agent";
-import { runReviewAgent } from "./agents/review.agent";
+import { runCampaignOrchestrator } from "./orchestrator/campaignOrchestrator";
 
+/**
+ * Legacy 3-field interface kept for CLI and backwards-compatible API endpoint.
+ * Internally delegates to the full 5-agent orchestrator.
+ */
 export async function runCampaignPipeline(
   product: string,
   audience: string
@@ -11,44 +13,25 @@ export async function runCampaignPipeline(
   console.log(`Product:  ${product}`);
   console.log(`Audience: ${audience}\n`);
 
-  console.log("Running research agent...");
-  let research;
-  try {
-    research = await runResearchAgent(product, audience);
-  } catch (error) {
-    throw new Error(
-      `Research agent failed: ${error instanceof Error ? error.message : String(error)}`
-    );
-  }
-
-  console.log("Running copy agent...");
-  let copy;
-  try {
-    copy = await runCopyAgent(product, audience, research);
-  } catch (error) {
-    throw new Error(
-      `Copy agent failed: ${error instanceof Error ? error.message : String(error)}`
-    );
-  }
-
-  console.log("Running review agent...");
-  let review;
-  try {
-    review = await runReviewAgent(product, audience, copy);
-  } catch (error) {
-    throw new Error(
-      `Review agent failed: ${error instanceof Error ? error.message : String(error)}`
-    );
-  }
+  const campaign = await runCampaignOrchestrator({
+    brandName: product,
+    productDescription: product,
+    industry: "General",
+    objective: "brand_awareness",
+    targetAudience: audience,
+    region: "Global",
+    tone: "professional",
+    platforms: ["meta_ads", "instagram"],
+  });
 
   console.log("Pipeline completed successfully.\n");
 
   return {
     product,
     audience,
-    generatedAt: new Date().toISOString(),
-    research,
-    copy,
-    review,
+    generatedAt: campaign.generatedAt,
+    research: campaign.research,
+    copy: campaign.copy,
+    review: campaign.review,
   };
 }

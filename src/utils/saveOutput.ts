@@ -1,10 +1,10 @@
 import fs from "fs";
 import path from "path";
-import { CampaignResult } from "../schemas/campaign.schemas";
+import { CampaignResult, FullCampaign } from "../schemas/campaign.schemas";
 
 const OUTPUT_DIR = path.resolve(process.cwd(), "output");
 
-function slugify(text: string): string {
+export function slugify(text: string): string {
   return text
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
@@ -12,9 +12,10 @@ function slugify(text: string): string {
     .slice(0, 40);
 }
 
+// ─── Legacy 3-agent campaign ───────────────────────────────────────────────────
+
 function buildMarkdown(result: CampaignResult): string {
   const { product, audience, generatedAt, research, copy, review } = result;
-
   const platformLabel = (p: string) => p.charAt(0).toUpperCase() + p.slice(1);
 
   return `# AI Campaign Report: ${product}
@@ -26,8 +27,8 @@ function buildMarkdown(result: CampaignResult): string {
 
 ## Research Insights
 
-**Target Audience Profile**
-${research.targetAudience}
+**Audience Profile**
+${research.audienceProfile}
 
 **Pain Points**
 ${research.painPoints.map((p) => `- ${p}`).join("\n")}
@@ -116,4 +117,21 @@ export async function saveCampaign(result: CampaignResult): Promise<void> {
   console.log(`\nCampaign saved:`);
   console.log(`  JSON:     ${jsonPath}`);
   console.log(`  Markdown: ${mdPath}`);
+}
+
+// ─── Full 5-agent campaign ─────────────────────────────────────────────────────
+
+export async function saveFullCampaign(campaign: FullCampaign): Promise<void> {
+  const dir = path.join(OUTPUT_DIR, "full");
+  await fs.promises.mkdir(dir, { recursive: true });
+
+  const timestamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
+  const slug = slugify(campaign.input.brandName);
+  const baseName = `${timestamp}-${slug}`;
+
+  const jsonPath = path.join(dir, `${baseName}.json`);
+
+  await fs.promises.writeFile(jsonPath, JSON.stringify(campaign, null, 2), "utf-8");
+
+  console.log(`\nFull campaign saved: ${jsonPath}`);
 }

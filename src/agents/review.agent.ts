@@ -1,5 +1,5 @@
-import { ChatOpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { createChatModel } from "../config/llm";
 import { ReviewOutputSchema, ReviewOutput, CopyOutput } from "../schemas/campaign.schemas";
 
 const SYSTEM_PROMPT = `You are a senior direct-response copywriter and marketing strategist with 15+ years of experience
@@ -19,11 +19,12 @@ Provide:
 Be direct, honest, and constructive. Vague feedback is unhelpful.`;
 
 export async function runReviewAgent(
-  product: string,
+  brandName: string,
   audience: string,
   copy: CopyOutput
 ): Promise<ReviewOutput> {
-  const model = new ChatOpenAI({ model: "gpt-4o-mini", temperature: 0.3 });
+  const product = brandName;
+  const model = createChatModel(0.3);
 
   const copyContext = [
     `Headline: ${copy.headline}`,
