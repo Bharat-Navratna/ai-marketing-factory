@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-// ─── Campaign Input ────────────────────────────────────────────────────────────
-
 export const CampaignInputSchema = z.object({
   brandName: z.string().min(1, "Brand name is required"),
   productDescription: z.string().min(10, "Product description must be at least 10 characters"),
@@ -27,8 +25,6 @@ export const CampaignInputSchema = z.object({
 
 export type CampaignInput = z.infer<typeof CampaignInputSchema>;
 
-// ─── Agent 1: Research Output ──────────────────────────────────────────────────
-
 export const ResearchOutputSchema = z.object({
   audienceProfile: z.string(),
   painPoints: z.array(z.string()),
@@ -42,8 +38,6 @@ export const ResearchOutputSchema = z.object({
 });
 
 export type ResearchOutput = z.infer<typeof ResearchOutputSchema>;
-
-// ─── Agent 2: Strategy Output ──────────────────────────────────────────────────
 
 export const StrategyOutputSchema = z.object({
   coreMessage: z.string(),
@@ -70,8 +64,6 @@ export const StrategyOutputSchema = z.object({
 
 export type StrategyOutput = z.infer<typeof StrategyOutputSchema>;
 
-// ─── Agent 3: Copy Output ──────────────────────────────────────────────────────
-
 export const AdVariantSchema = z.object({
   platform: z.enum(["google", "meta", "instagram", "tiktok", "linkedin", "facebook"]),
   copy: z.string(),
@@ -90,8 +82,6 @@ export const CopyOutputSchema = z.object({
 });
 
 export type CopyOutput = z.infer<typeof CopyOutputSchema>;
-
-// ─── Agent 4: Channel Plan Output ─────────────────────────────────────────────
 
 export const MetaAdSchema = z.object({
   campaignObjective: z.string(),
@@ -159,8 +149,6 @@ export const ChannelPlanOutputSchema = z.object({
 
 export type ChannelPlanOutput = z.infer<typeof ChannelPlanOutputSchema>;
 
-// ─── Agent 3 Review (kept for backwards compat) ───────────────────────────────
-
 export const ReviewOutputSchema = z.object({
   overallScore: z.number(),
   clarityScore: z.number(),
@@ -172,8 +160,6 @@ export const ReviewOutputSchema = z.object({
 });
 
 export type ReviewOutput = z.infer<typeof ReviewOutputSchema>;
-
-// ─── Full Campaign Result ──────────────────────────────────────────────────────
 
 export const FullCampaignSchema = z.object({
   id: z.string(),
@@ -192,8 +178,6 @@ export const FullCampaignSchema = z.object({
 });
 
 export type FullCampaign = z.infer<typeof FullCampaignSchema>;
-
-// ─── Legacy: simple 3-agent result (CLI / old API endpoint) ───────────────────
 
 export const CampaignResultSchema = z.object({
   product: z.string(),

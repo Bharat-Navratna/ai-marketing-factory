@@ -12,8 +12,6 @@ export function slugify(text: string): string {
     .slice(0, 40);
 }
 
-// ─── Legacy 3-agent campaign ───────────────────────────────────────────────────
-
 function buildMarkdown(result: CampaignResult): string {
   const { product, audience, generatedAt, research, copy, review } = result;
   const platformLabel = (p: string) => p.charAt(0).toUpperCase() + p.slice(1);
@@ -118,8 +116,6 @@ export async function saveCampaign(result: CampaignResult): Promise<void> {
   console.log(`  JSON:     ${jsonPath}`);
   console.log(`  Markdown: ${mdPath}`);
 }
-
-// ─── Full 5-agent campaign ─────────────────────────────────────────────────────
 
 export async function saveFullCampaign(campaign: FullCampaign): Promise<void> {
   const dir = path.join(OUTPUT_DIR, "full");

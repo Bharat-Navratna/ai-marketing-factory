@@ -83,7 +83,6 @@ export default function CampaignForm({ onSubmit, isLoading }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-      {/* Demo Presets */}
       <div>
         <p className="section-title">Demo Presets</p>
         <div className="grid grid-cols-2 gap-2">
@@ -107,8 +106,6 @@ export default function CampaignForm({ onSubmit, isLoading }: Props) {
       </div>
 
       <Divider />
-
-      {/* Brand & Product */}
       <div>
         <p className="section-title">Brand & Product</p>
         <div className="space-y-3">
@@ -143,8 +140,6 @@ export default function CampaignForm({ onSubmit, isLoading }: Props) {
       </div>
 
       <Divider />
-
-      {/* Campaign Settings */}
       <div>
         <p className="section-title">Campaign Settings</p>
         <div className="space-y-3">
@@ -200,8 +195,6 @@ export default function CampaignForm({ onSubmit, isLoading }: Props) {
       </div>
 
       <Divider />
-
-      {/* Target Audience */}
       <div>
         <p className="section-title">Target Audience</p>
         <Field label="Audience Description" required>
@@ -216,8 +209,6 @@ export default function CampaignForm({ onSubmit, isLoading }: Props) {
       </div>
 
       <Divider />
-
-      {/* Platforms */}
       <div>
         <p className="section-title">Platforms</p>
         <div className="flex flex-wrap gap-2">
@@ -246,8 +237,6 @@ export default function CampaignForm({ onSubmit, isLoading }: Props) {
       </div>
 
       <Divider />
-
-      {/* Optional */}
       <div>
         <p className="section-title">Optional</p>
         <div className="space-y-3">
@@ -269,8 +258,6 @@ export default function CampaignForm({ onSubmit, isLoading }: Props) {
           </Field>
         </div>
       </div>
-
-      {/* Submit */}
       <button
         type="submit"
         disabled={!isValid || isLoading}

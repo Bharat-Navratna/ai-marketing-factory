@@ -39,7 +39,6 @@ export default function CampaignDashboard({ campaign }: Props) {
 
   return (
     <div className="animate-slide-up">
-      {/* Campaign header */}
       <div className="card mb-4 flex items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
@@ -55,8 +54,6 @@ export default function CampaignDashboard({ campaign }: Props) {
           <ScoreRing score={review.overallScore} label="Score" />
         </div>
       </div>
-
-      {/* Tabs */}
       <div className="flex gap-1 overflow-x-auto pb-1 mb-4 no-scrollbar">
         {TABS.map((tab) => (
           <button
@@ -73,8 +70,6 @@ export default function CampaignDashboard({ campaign }: Props) {
           </button>
         ))}
       </div>
-
-      {/* Tab content */}
       <div className="min-h-[400px]">
         {activeTab === "overview" && <OverviewTab campaign={campaign} />}
         {activeTab === "research" && <ResearchTab research={research} />}
@@ -91,28 +86,21 @@ export default function CampaignDashboard({ campaign }: Props) {
   );
 }
 
-// ─── Overview ──────────────────────────────────────────────────────────────────
-
 function OverviewTab({ campaign }: { campaign: FullCampaign }) {
   const { input, strategy, copy, review, channelPlan } = campaign;
   return (
     <div className="space-y-4 animate-fade-in">
-      {/* Scores */}
       <div className="grid grid-cols-4 gap-3">
         <ScoreCard label="Overall" score={review.overallScore} />
         <ScoreCard label="Clarity" score={review.clarityScore} />
         <ScoreCard label="Persuasion" score={review.persuasivenessScore} />
         <ScoreCard label="Alignment" score={review.audienceAlignmentScore} />
       </div>
-
-      {/* Core message */}
       <div className="card border-gold-600/30">
         <p className="section-title">Core Message</p>
         <p className="text-lg font-semibold text-white leading-snug">{strategy.coreMessage}</p>
         <p className="text-sm text-gray-400 mt-2">{strategy.uniqueValueProposition}</p>
       </div>
-
-      {/* Headline */}
       <div className="card">
         <p className="section-title">Campaign Headline</p>
         <p className="text-xl font-bold text-gold-400">&quot;{copy.headline}&quot;</p>
@@ -124,7 +112,6 @@ function OverviewTab({ campaign }: { campaign: FullCampaign }) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Platforms */}
         <div className="card">
           <p className="section-title">Platforms</p>
           <div className="flex flex-wrap gap-2">
@@ -142,8 +129,6 @@ function OverviewTab({ campaign }: { campaign: FullCampaign }) {
             {input.duration && <InfoRow label="Duration" value={input.duration} />}
           </div>
         </div>
-
-        {/* Budget */}
         <div className="card">
           <p className="section-title">Budget Breakdown</p>
           <div className="space-y-2">
@@ -156,8 +141,6 @@ function OverviewTab({ campaign }: { campaign: FullCampaign }) {
           </div>
         </div>
       </div>
-
-      {/* Hashtags */}
       <div className="card">
         <p className="section-title">Suggested Hashtags</p>
         <div className="flex flex-wrap gap-2">
@@ -171,8 +154,6 @@ function OverviewTab({ campaign }: { campaign: FullCampaign }) {
     </div>
   );
 }
-
-// ─── Research ─────────────────────────────────────────────────────────────────
 
 function ResearchTab({ research }: { research: FullCampaign["research"] }) {
   return (
@@ -193,8 +174,6 @@ function ResearchTab({ research }: { research: FullCampaign["research"] }) {
   );
 }
 
-// ─── Strategy ─────────────────────────────────────────────────────────────────
-
 function StrategyTab({ strategy }: { strategy: FullCampaign["strategy"] }) {
   const { customerPersona, funnelStrategy } = strategy;
   return (
@@ -206,8 +185,6 @@ function StrategyTab({ strategy }: { strategy: FullCampaign["strategy"] }) {
       <InfoCard title="Positioning Statement" text={strategy.positioningStatement} />
       <InfoCard title="Campaign Theme" text={strategy.campaignTheme} />
       <ListCard title="Messaging Angles" items={strategy.messagingAngles} color="gold" />
-
-      {/* Funnel */}
       <div className="card">
         <p className="section-title">Funnel Strategy</p>
         <div className="space-y-3">
@@ -216,8 +193,6 @@ function StrategyTab({ strategy }: { strategy: FullCampaign["strategy"] }) {
           <FunnelRow stage="Conversion" text={funnelStrategy.conversion} color="green" />
         </div>
       </div>
-
-      {/* Persona */}
       <div className="card border-gold-600/30">
         <p className="section-title">Customer Persona</p>
         <div className="flex items-start gap-4">
@@ -242,8 +217,6 @@ function StrategyTab({ strategy }: { strategy: FullCampaign["strategy"] }) {
   );
 }
 
-// ─── Copy ─────────────────────────────────────────────────────────────────────
-
 function CopyTab({
   copy,
   review,
@@ -263,8 +236,6 @@ function CopyTab({
         <p className="section-title">Call to Action</p>
         <p className="text-lg font-semibold text-white">{copy.callToAction}</p>
       </div>
-
-      {/* Ad Variants */}
       <div className="card">
         <p className="section-title">Platform Ad Variants</p>
         <div className="space-y-3">
@@ -279,8 +250,6 @@ function CopyTab({
           ))}
         </div>
       </div>
-
-      {/* Social post ideas */}
       <div className="card">
         <p className="section-title">Social Post Ideas</p>
         <div className="space-y-2">
@@ -291,8 +260,6 @@ function CopyTab({
           ))}
         </div>
       </div>
-
-      {/* Review */}
       <div className="card">
         <p className="section-title">Copy Review</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
@@ -313,8 +280,6 @@ function CopyTab({
     </div>
   );
 }
-
-// ─── Meta Package ─────────────────────────────────────────────────────────────
 
 function MetaTab({ meta }: { meta: FullCampaign["exportPackage"]["meta"] }) {
   return (
@@ -354,8 +319,6 @@ function MetaTab({ meta }: { meta: FullCampaign["exportPackage"]["meta"] }) {
   );
 }
 
-// ─── TikTok Package ───────────────────────────────────────────────────────────
-
 function TikTokTab({ tiktok }: { tiktok: FullCampaign["exportPackage"]["tiktok"] }) {
   return (
     <div className="space-y-4 animate-fade-in">
@@ -392,8 +355,6 @@ function TikTokTab({ tiktok }: { tiktok: FullCampaign["exportPackage"]["tiktok"]
   );
 }
 
-// ─── Email ────────────────────────────────────────────────────────────────────
-
 function EmailTab({ copy }: { copy: FullCampaign["copy"] }) {
   return (
     <div className="space-y-4 animate-fade-in">
@@ -410,8 +371,6 @@ function EmailTab({ copy }: { copy: FullCampaign["copy"] }) {
     </div>
   );
 }
-
-// ─── Content Calendar ─────────────────────────────────────────────────────────
 
 function CalendarTab({ calendar }: { calendar: FullCampaign["channelPlan"]["contentCalendar"] }) {
   return (
@@ -434,8 +393,6 @@ function CalendarTab({ calendar }: { calendar: FullCampaign["channelPlan"]["cont
     </div>
   );
 }
-
-// ─── KPIs ─────────────────────────────────────────────────────────────────────
 
 function KpisTab({
   kpis,
@@ -475,8 +432,6 @@ function KpisTab({
     </div>
   );
 }
-
-// ─── Reusable Atoms ───────────────────────────────────────────────────────────
 
 function ScoreRing({ score, label }: { score: number; label: string }) {
   const color =

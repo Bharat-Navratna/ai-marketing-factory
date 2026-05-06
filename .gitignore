@@ -3,3 +3,7 @@ dist
 .env
 outputs
 output
+.next
+frontend/.next
+*.tsbuildinfo
+.DS_Store

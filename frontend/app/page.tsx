@@ -6,8 +6,6 @@ import { generateCampaign } from "@/lib/api";
 import CampaignForm from "@/components/CampaignForm";
 import PipelineProgress from "@/components/PipelineProgress";
 import CampaignDashboard from "@/components/CampaignDashboard";
-
-// Simulated stage progression while waiting for the real API response
 const STAGE_SEQUENCE: PipelineStage[] = [
   "research",
   "strategy",
@@ -15,7 +13,7 @@ const STAGE_SEQUENCE: PipelineStage[] = [
   "channel_planning",
   "review",
 ];
-const STAGE_DURATION = 8_000; // ms per stage (approx 40s total for 5 stages)
+const STAGE_DURATION = 8_000;
 
 export default function StudioPage() {
   const [stage, setStage] = useState<PipelineStage>("idle");
@@ -66,7 +64,6 @@ export default function StudioPage() {
 
   return (
     <div className="min-h-screen bg-surface-900">
-      {/* Header */}
       <header className="border-b border-surface-700 sticky top-0 z-50 bg-surface-900/95 backdrop-blur-sm">
         <div className="max-w-[1400px] mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -83,10 +80,7 @@ export default function StudioPage() {
           </div>
         </div>
       </header>
-
-      {/* Main layout */}
       <div className="max-w-[1400px] mx-auto px-6 py-6 flex gap-6 min-h-[calc(100vh-56px)]">
-        {/* Left panel — Form */}
         <aside className="w-[360px] flex-shrink-0">
           <div className="sticky top-[78px] max-h-[calc(100vh-94px)] overflow-y-auto pr-1 pb-4">
             <div className="mb-4">
@@ -98,8 +92,6 @@ export default function StudioPage() {
             <CampaignForm onSubmit={handleGenerate} isLoading={isLoading} />
           </div>
         </aside>
-
-        {/* Right panel — Output */}
         <main className="flex-1 min-w-0">
           {stage === "idle" && <EmptyState />}
           {isLoading && <PipelineProgress currentStage={stage} />}
@@ -122,8 +114,6 @@ function EmptyState() {
         Fill in your brand details or pick a demo preset on the left. A 5-agent AI pipeline
         will generate a complete, export-ready marketing campaign.
       </p>
-
-      {/* Pipeline visualization */}
       <div className="flex items-center gap-2 text-xs text-gray-500">
         {["🔬 Research", "🎯 Strategy", "✍️ Copy", "📱 Channels", "⭐ Review"].map(
           (label, i, arr) => (

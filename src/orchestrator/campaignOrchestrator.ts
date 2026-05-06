@@ -21,7 +21,7 @@ export type StageCallback = (stage: PipelineStage, message: string) => void;
  * Originally prototyped with workflow automation, refactored into a custom
  * TypeScript engine for better ownership, portability, and scalability.
  *
- * Pipeline: Research → Strategy → Copywriting → Channel Planning → Review
+ * Pipeline: Research, Strategy, Copywriting, Channel Planning, Review.
  */
 export async function runCampaignOrchestrator(
   input: CampaignInput,
@@ -29,34 +29,24 @@ export async function runCampaignOrchestrator(
 ): Promise<FullCampaign> {
   const id = randomUUID();
   const generatedAt = new Date().toISOString();
-
-  // ─── Stage 1: Research ────────────────────────────────────────────────────
   onStage?.("research", "Analyzing market, audience, and competitors...");
   const research = await runResearchAgent(input).catch((err) => {
     throw new Error(`Research agent failed: ${(err as Error).message}`);
   });
-
-  // ─── Stage 2: Strategy ────────────────────────────────────────────────────
   onStage?.("strategy", "Building positioning, messaging angles, and persona...");
   const strategy = await runStrategyAgent(input, research).catch((err) => {
     throw new Error(`Strategy agent failed: ${(err as Error).message}`);
   });
-
-  // ─── Stage 3: Copywriting ─────────────────────────────────────────────────
   onStage?.("copywriting", "Writing headlines, ad copy, email, and social posts...");
   const copy = await runCopyAgent(input, research, strategy).catch((err) => {
     throw new Error(`Copy agent failed: ${(err as Error).message}`);
   });
-
-  // ─── Stage 4: Channel Planning ────────────────────────────────────────────
   onStage?.("channel_planning", "Building Meta Ads and TikTok Ads packages...");
   const channelPlan = await runChannelPlanningAgent(input, research, strategy, copy).catch(
     (err) => {
       throw new Error(`Channel planning agent failed: ${(err as Error).message}`);
     }
   );
-
-  // ─── Stage 5: Review ──────────────────────────────────────────────────────
   onStage?.("review", "Scoring and quality-checking the campaign...");
   const review = await runReviewAgent(input.brandName, input.targetAudience, copy).catch((err) => {
     throw new Error(`Review agent failed: ${(err as Error).message}`);

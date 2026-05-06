@@ -41,19 +41,13 @@ app.use((req, res, next) => {
 
 const PORT = Number(process.env.PORT) || 3001;
 const OUTPUT_DIR = path.resolve(process.cwd(), "output");
-
-// ─── Legacy schema for the old /api/generate endpoint ─────────────────────────
 const LegacyGenerateSchema = z.object({
   product: z.string().min(1, "Product name is required"),
   audience: z.string().min(1, "Audience description is required"),
 });
-
-// ─── Health ────────────────────────────────────────────────────────────────────
 app.get("/api/health", (_req: Request, res: Response) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
-
-// ─── New: Full campaign generation (5-agent orchestrator) ─────────────────────
 app.post("/api/campaigns/generate", async (req: Request, res: Response) => {
   const parsed = CampaignInputSchema.safeParse(req.body);
   if (!parsed.success) {
@@ -75,8 +69,6 @@ app.post("/api/campaigns/generate", async (req: Request, res: Response) => {
     });
   }
 });
-
-// ─── New: List saved full campaigns ───────────────────────────────────────────
 app.get("/api/campaigns", async (_req: Request, res: Response) => {
   try {
     const dir = path.join(OUTPUT_DIR, "full");
@@ -99,8 +91,6 @@ app.get("/api/campaigns", async (_req: Request, res: Response) => {
     });
   }
 });
-
-// ─── Legacy: 3-agent pipeline (kept for backwards compatibility) ───────────────
 app.post("/api/generate", async (req: Request, res: Response) => {
   const parsed = LegacyGenerateSchema.safeParse(req.body);
   if (!parsed.success) {
@@ -120,8 +110,6 @@ app.post("/api/generate", async (req: Request, res: Response) => {
     });
   }
 });
-
-// ─── Legacy: list old-format campaigns ────────────────────────────────────────
 app.get("/api/campaigns/legacy", async (_req: Request, res: Response) => {
   try {
     await fs.promises.mkdir(OUTPUT_DIR, { recursive: true });
@@ -145,12 +133,12 @@ app.get("/api/campaigns/legacy", async (_req: Request, res: Response) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`\n🚀 AI Campaign Studio API — http://localhost:${PORT}`);
+  console.log(`\nAI Campaign Studio API: http://localhost:${PORT}`);
   console.log(`\nEndpoints:`);
   console.log(`  GET  /api/health`);
   console.log(`  POST /api/campaigns/generate   { brandName, productDescription, ... }`);
   console.log(`  GET  /api/campaigns`);
-  console.log(`  POST /api/generate             (legacy — product + audience)`);
+  console.log(`  POST /api/generate             (legacy product + audience)`);
   console.log(`  GET  /api/campaigns/legacy\n`);
 });
 

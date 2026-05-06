@@ -91,7 +91,6 @@ export default function PipelineProgress({ currentStage }: Props) {
                   : "border-surface-600 bg-surface-800 opacity-40"
               }`}
             >
-              {/* Status icon */}
               <div
                 className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 text-sm ${
                   isDone
@@ -109,8 +108,6 @@ export default function PipelineProgress({ currentStage }: Props) {
                   <span className="text-base">{stage.icon}</span>
                 )}
               </div>
-
-              {/* Text */}
               <div className="flex-1 min-w-0">
                 <p
                   className={`text-sm font-semibold ${
@@ -121,8 +118,6 @@ export default function PipelineProgress({ currentStage }: Props) {
                 </p>
                 <p className="text-xs text-gray-500 truncate">{stage.detail}</p>
               </div>
-
-              {/* Right badge */}
               <span
                 className={`text-xs font-medium flex-shrink-0 ${
                   isDone

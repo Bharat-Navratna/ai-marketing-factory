@@ -41,7 +41,6 @@ export default function ExportSection({ campaign }: Props) {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        {/* Meta Package */}
         <ExportCard
           title="Meta Ads Package"
           icon="◈"
@@ -55,8 +54,6 @@ export default function ExportSection({ campaign }: Props) {
           }
           copied={copied === "meta"}
         />
-
-        {/* TikTok Package */}
         <ExportCard
           title="TikTok Ads Package"
           icon="♪"
@@ -70,8 +67,6 @@ export default function ExportSection({ campaign }: Props) {
           }
           copied={copied === "tiktok"}
         />
-
-        {/* Full Campaign JSON */}
         <ExportCard
           title="Full Campaign JSON"
           icon="{ }"
@@ -86,8 +81,6 @@ export default function ExportSection({ campaign }: Props) {
           copied={copied === "full"}
         />
       </div>
-
-      {/* Meta Ad preview */}
       <div className="card mt-2">
         <p className="section-title">Meta Ad — Export Preview</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -117,8 +110,6 @@ export default function ExportSection({ campaign }: Props) {
           </div>
         </div>
       </div>
-
-      {/* TikTok Ad preview */}
       <div className="card">
         <p className="section-title">TikTok Ad — Export Preview</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
